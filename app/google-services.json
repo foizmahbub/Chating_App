@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "634388824740",
+    "project_id": "alocona-fc22e",
+    "storage_bucket": "alocona-fc22e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634388824740:android:f5a46fa949958b249a5c31",
+        "android_client_info": {
+          "package_name": "com.example.alocona"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-gEMW9y9gYLAkohsJfreIrDCI1jt0Pjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

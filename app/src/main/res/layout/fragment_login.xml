@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#B61049"
+    android:orientation="vertical"
+    tools:context=".LoginFragment">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/image"/>
+
+    <EditText
+        android:id="@+id/email_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:background="@drawable/et_bg"
+        android:fontFamily="@font/agbalumo"
+        android:hint="Enter Your Email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textAlignment="center" />
+    <EditText
+        android:id="@+id/password_ET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Password"
+        android:fontFamily="@font/agbalumo"
+        android:textAlignment="center"
+        android:inputType="textPassword"
+      android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawableRight="@drawable/baseline_remove_red_eye_24"
+        android:background="@drawable/et_bg"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:fontFamily="@font/agbalumo"
+        android:backgroundTint="#D6A615"
+        android:background="@drawable/btn_bg"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/forget_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/agbalumo"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"/>
+
+    <TextView
+        android:id="@+id/create_Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Account"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/agbalumo"
+        android:textStyle="bold"
+        android:textColor="#08DDC9"
+        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"/>
+
+
+</LinearLayout>
