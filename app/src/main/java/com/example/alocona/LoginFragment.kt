@@ -13,9 +13,11 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
+    lateinit var firebaseUser: FirebaseUser
 
 
     override fun onCreateView(
@@ -24,7 +26,13 @@ class LoginFragment : Fragment() {
     ): View? {
 
         binding=FragmentLoginBinding.inflate(inflater,container,false)
-        // Inflate the layout for this fragment
+
+      FirebaseAuth.getInstance().currentUser?.let {
+          firebaseUser=it
+          findNavController().navigate(R.id.action_loginFragment3_to_homeFragment)
+      }
+
+
         binding.loginBtn.setOnClickListener {
             val email=binding.emailET.text.toString() .trim()
             val password =binding.passwordET.text.toString().trim()
@@ -42,7 +50,9 @@ class LoginFragment : Fragment() {
 
         }
 
-
+   binding.createAccount.setOnClickListener{
+       findNavController().navigate(R.id.action_loginFragment3_to_signInFragment)
+   }
 
         return binding.root
     }
