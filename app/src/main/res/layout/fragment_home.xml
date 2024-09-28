@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-  <Button
-     android:id="@+id/logoutBtn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Logout"
-      android:layout_gravity="center"/>
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:id="@+id/topBar"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:padding="10dp"
+     android:background="#41424B"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent">
 
 
-</LinearLayout>
+ <ImageView
+       android:id="@+id/logoutBtn"
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+     android:src="@drawable/logout"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+
+       app:tint="#20DA9F"
+       android:padding="5dp"/>
+   <TextView
+       android:id="@+id/userTv"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+     android:text="User List"
+       app:layout_constraintStart_toStartOf="@id/logoutBtn"
+  app:layout_constraintEnd_toEndOf="parent"
+     android:textColor="@color/white"
+     android:textStyle="bold"
+     android:layout_gravity="center_vertical"
+       app:layout_constraintTop_toTopOf="@id/logoutBtn"
+     app:layout_constraintBottom_toBottomOf="@id/logoutBtn"/>
+   <ImageView
+       android:id="@+id/searchBtn"
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+       android:src="@drawable/baseline_search_24"
+       app:layout_constraintEnd_toStartOf="@id/profileBtn"
+       app:layout_constraintTop_toTopOf="@id/profileBtn"
+       app:tint="#20DA9F"
+       android:padding="5dp"/>
+   <ImageView
+       android:id="@+id/profileBtn"
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+       android:src="@drawable/baseline_menu_24"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/profile_item"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#0E1435"
+    android:background="#7F0649"
     android:layout_height="match_parent"
     tools:context=".SignInFragment">
     <ImageView
