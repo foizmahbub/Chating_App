@@ -15,6 +15,7 @@ class SignInFragment : Fragment() {
 
           lateinit var  binding: FragmentSignInBinding
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
