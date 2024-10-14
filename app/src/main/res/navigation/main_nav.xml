@@ -41,5 +41,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.alocona.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileEdiitFragment"
+            app:destination="@id/profileEdiitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEdiitFragment"
+        android:name="com.example.alocona.profileEdiitFragment"
+        android:label="fragment_profile_ediit"
+        tools:layout="@layout/fragment_profile_ediit" />
 </navigation>

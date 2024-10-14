@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import coil3.load
 import com.example.alocona.databinding.FragmentHomeBinding
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -21,6 +24,11 @@ class HomeFragment : Fragment(),UserAdapter.ItemClick {
     lateinit var  binding: FragmentHomeBinding
     lateinit var userDB :DatabaseReference
     lateinit var adapter: UserAdapter
+
+    private var auth =FirebaseAuth.getInstance()
+    private var bundle=Bundle()
+    private  var currentUser: com.example.alocona.User? =null
+    lateinit var firebaseUser: FirebaseUser
     var userlist : MutableList<com.example.alocona.User> = mutableListOf()
 
 
@@ -31,9 +39,20 @@ class HomeFragment : Fragment(),UserAdapter.ItemClick {
     ): View? {
         binding= FragmentHomeBinding.inflate(inflater,container,false)
         userDB=FirebaseDatabase.getInstance().reference
+     FirebaseAuth.getInstance().currentUser?.let {
+         firebaseUser=it
 
+     }
+
+         binding.profileBtn.setOnClickListener {
+             currentUser?.let {
+                 bundle.putString("id",it.userId)
+                 findNavController().navigate(R.id.action_homeFragment_to_profileFragment,bundle)
+
+             }
+         }
         binding.logoutBtn.setOnClickListener {
-            val auth =FirebaseAuth.getInstance()
+
             auth.signOut().apply {
                 findNavController().navigate(R.id.action_homeFragment_to_loginFragment3)
             }
@@ -53,12 +72,27 @@ class HomeFragment : Fragment(),UserAdapter.ItemClick {
             override fun onDataChange(snapshot: DataSnapshot) {
               userlist.clear()
                 snapshot.children.forEach {
-                   val user:com.example.alocona.User=it.getValue(com.example.alocona.User::class.java)!!
+                    val user: com.example.alocona.User =
+                        it.getValue(com.example.alocona.User::class.java)!!
 
-                    userlist.add(user)
+                    if (firebaseUser.uid != user.userId){
+
+                        userlist.add(user)
+                   }else{
+                       currentUser=user
+                       // setProfile()
+                    }
+
                 }
                 adapter.submitList(userlist)
             }
+
+           // private fun setProfile() {
+             //   currentUser.let {
+                   // binding.profileBtn.load("https:" + "//www.google." + "com/url?sa=i&url" + "=https%3A%2F%2Fbd.linkedin.com%2Fin%2Ffoiz-mahbub-soroj-9b3053248&psig=" + "AOvVaw1QJEv7rE9bVFO3Pi_uJKJ1&ust=1728997892060000&source=images&cd=vfe&opi=" + "89978449&ved=0CBQQjRxqFwoTCNiCo6r5jYkDFQAAAAAdAAAAABAE")
+              //  }
+
+          //  }
 
             override fun onCancelled(error: DatabaseError) {
 
@@ -70,7 +104,7 @@ class HomeFragment : Fragment(),UserAdapter.ItemClick {
     }
 
     override fun onItemClick(user: com.example.alocona.User) {
-        var bundle=Bundle()
+
         bundle.putString("id",user.userId)
         findNavController().navigate(R.id.action_homeFragment_to_profileFragment,bundle)
     }
